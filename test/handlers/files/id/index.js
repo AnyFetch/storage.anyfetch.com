@@ -51,16 +51,24 @@ describe("/files/:id endpoint", function() {
   });
 
   describe("DELETE /files/:id", function() {
-    it("should fail on unknown file", function(next) {
+    it("should fail on invalid identifier", function(next) {
       request(server)
-        .get('/files/unknown-id')
+        .del('/files/unknown-id')
+        .expect(409)
+        .end(next);
+    });
+
+    it("should fail on unknown identifier", function(next) {
+      request(server)
+        .del('/files/123456')
         .expect(404)
         .end(next);
     });
 
+
     it("should return 204 after deletion", function(next) {
       request(server)
-        .get(fileUrl.replace(config.storageUrl, ''))
+        .del(fileUrl.replace(config.storageUrl, ''))
         .expect(204)
         .end(next);
     });
