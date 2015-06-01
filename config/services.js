@@ -1,7 +1,7 @@
 'use strict';
 
 var opbeatClient = require('./vendors').opbeat;
-var config = require('./configuration.js');
+var config = require('./');
 /**
  * Called when an error occurs in the app.
  * Will be logged on the console and sent a third-party logging service.
