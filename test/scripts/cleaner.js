@@ -4,9 +4,9 @@ require("should");
 
 var request = require("supertest");
 
-var server = require('../app');
-var config = require("../config");
-var cleaner = require('../lib/cleaner');
+var server = require('../../app');
+var config = require("../../config");
+var cleaner = require('../../scripts/cleaner');
 
 describe("Cleaner script", function() {
   var fileUrl;

@@ -8,6 +8,7 @@ var fs = require("fs");
 
 var config = require('./config');
 var logError = require('./config/services.js').logError;
+var cleaner = require('./scripts/cleaner');
 
 
 var lib = require('./lib/');
@@ -48,3 +49,11 @@ server.on('uncaughtException', function(req, res, route, err) {
 });
 
 module.exports = server;
+
+// 3 hours
+var delayBetweenCleans = (1000 * 60 * 60) * 3;
+setInterval(function cleanOldFiles() {
+  var olderThan = new Date(new Date().getTime() - config.ttl);
+  console.log("Cleaning olderThan" + olderThan);
+  cleaner(olderThan, logError);
+}, delayBetweenCleans);
