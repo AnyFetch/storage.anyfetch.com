@@ -48,4 +48,3 @@ server.on('uncaughtException', function(req, res, route, err) {
 });
 
 module.exports = server;
-
