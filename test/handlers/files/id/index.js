@@ -20,6 +20,7 @@ describe("/files/:id endpoint", function() {
       .expect(function(res) {
         res.body.should.have.property("url");
         fileUrl = res.body.url;
+        console.log(fileUrl);
       })
       .end(done);
   });
@@ -73,7 +74,7 @@ describe("/files/:id endpoint", function() {
         .end(next);
     });
 
-    it("should not be available anymore", function(next) {
+   it("should not be available anymore", function(next) {
       request(server)
         .get(fileUrl.replace(config.storageUrl, ''))
         .expect(404)
