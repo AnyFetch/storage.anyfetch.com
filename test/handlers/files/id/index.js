@@ -2,7 +2,6 @@
 
 require("should");
 
-var async = require("async");
 var request = require("supertest");
 var fs = require("fs");
 
@@ -26,9 +25,16 @@ describe("/files/:id endpoint", function() {
   });
 
   describe("GET /files/:id", function() {
-    it("should fail on unknown file", function(next) {
+    it("should fail on invalid identifier", function(next) {
       request(server)
         .get('/files/unknown-id')
+        .expect(409)
+        .end(next);
+    });
+
+    it("should fail on unknown identifier", function(next) {
+      request(server)
+        .get('/files/123456')
         .expect(404)
         .end(next);
     });
@@ -38,7 +44,7 @@ describe("/files/:id endpoint", function() {
         .get(fileUrl.replace(config.storageUrl, ''))
         .expect(200)
         .expect(function(res) {
-          res.body.should.eql(fs.readFileSync(__filename));
+          res.text.should.eql(fs.readFileSync(__filename, 'binary').toString());
         })
         .end(next);
     });
