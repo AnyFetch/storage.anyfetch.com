@@ -9,7 +9,7 @@ var handlers = lib.handlers;
 
 // Routes client requests to handlers
 module.exports = function(server) {
-  server.get('/init/connect', handlers.init.connect.get);
-  server.get('/init/callback', handlers.init.callback.get);
-  server.get('/init/register', handlers.init.register.get);
+  server.post('/files', handlers.files.index.post);
+  server.get('/files/:id', handlers.files.id.index.get);
+  server.del('/files/:id', handlers.files.id.index.del);
 };
