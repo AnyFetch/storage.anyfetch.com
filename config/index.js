@@ -15,6 +15,7 @@ var nodeEnv = process.env.NODE_ENV || "development";
 var port = process.env.PORT || 8000;
 
 var storageUrl = process.env.STORAGE_URL || 'https://storage.anyfetch.com';
+var storageDir = (process.env.STORAGE_DIR || '/tmp') + "/storage-anyfetch";
 
 // Third party services
 var services = {};
@@ -31,6 +32,7 @@ module.exports = {
   port: port,
 
   storageUrl: storageUrl,
+  storageDir: storageDir,
 
   services: services
 };
