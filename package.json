@@ -1,0 +1,42 @@
+{
+  "name": "anyfetch-storage",
+  "version": "0.1.0",
+  "description": "Short term server for binary file storage",
+  "main": "./lib/",
+  "scripts": {
+    "start": "node ./bin/server.js",
+    "test": "NODE_ENV=test mocha -R spec",
+    "lint": "jshint lib/ test/ config/ bin/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AnyFetch/storage.anyfetch.com.git"
+  },
+  "keywords": [
+    "anyfetch"
+  ],
+  "author": "Matthieu Bacconnier <matthieu@anyfetch.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnyFetch/storage.anyfetch.com/issues"
+  },
+  "homepage": "https://github.com/AnyFetch/storage.anyfetch.com",
+  "dependencies": {
+    "anyfetch": "^2.1.9",
+    "async": "^0.9.0",
+    "auto-load": "^1.1.0",
+    "dotenv": "^0.5.1",
+    "newrelic": "^1.16.2",
+    "opbeat": "~1.1.2",
+    "rarity": "^2.1.1",
+    "restify": "^2.8.5",
+    "restify-logger": "^2.0.1",
+    "supertest": "^0.15.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0",
+    "mocha": "^2.1.0",
+    "should": "^5.0.0",
+    "sinon": "^1.12.2"
+  }
+}
