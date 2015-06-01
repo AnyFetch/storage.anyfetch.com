@@ -1,4 +1,4 @@
-sotrage.anyfetch.com
+storage.anyfetch.com
 ================
 
 Server storing binary files for short duration.
