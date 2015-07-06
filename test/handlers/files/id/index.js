@@ -12,7 +12,7 @@ var config = require("../../../../config");
 describe("/files/:id endpoint", function() {
   var fileUrl;
 
-  before(function sendFile(next) {
+  before(function sendFile(done) {
     request(server)
       .post('/files')
       .attach('file', __filename)
@@ -20,49 +20,50 @@ describe("/files/:id endpoint", function() {
       .expect(function(res) {
         res.body.should.have.property("url");
         fileUrl = res.body.url;
+        console.log(fileUrl);
       })
-      .end(next);
+      .end(done);
   });
 
   describe("GET /files/:id", function() {
-    it("should fail on invalid identifier", function(next) {
+    it("should fail on invalid identifier", function(done) {
       request(server)
         .get('/files/unknown-id')
         .expect(409)
-        .end(next);
+        .end(done);
     });
 
-    it("should fail on unknown identifier", function(next) {
+    it("should fail on unknown identifier", function(done) {
       request(server)
         .get('/files/123456')
         .expect(404)
-        .end(next);
+        .end(done);
     });
 
-    it("should return the file", function(next) {
+    it("should return the file", function(done) {
       request(server)
         .get(fileUrl.replace(config.storageUrl, ''))
         .expect(200)
         .expect(function(res) {
           res.text.should.eql(fs.readFileSync(__filename, 'binary').toString());
         })
-        .end(next);
+        .end(done);
     });
   });
 
   describe("DELETE /files/:id", function() {
-    it("should fail on invalid identifier", function(next) {
+    it("should fail on invalid identifier", function(done) {
       request(server)
         .del('/files/unknown-id')
         .expect(409)
-        .end(next);
+        .end(done);
     });
 
-    it("should fail on unknown identifier", function(next) {
+    it("should fail on unknown identifier", function(done) {
       request(server)
         .del('/files/123456')
         .expect(404)
-        .end(next);
+        .end(done);
     });
 
 
@@ -73,7 +74,7 @@ describe("/files/:id endpoint", function() {
         .end(next);
     });
 
-    it("should not be available anymore", function(next) {
+   it("should not be available anymore", function(next) {
       request(server)
         .get(fileUrl.replace(config.storageUrl, ''))
         .expect(404)
