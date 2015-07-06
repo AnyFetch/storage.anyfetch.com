@@ -3,8 +3,8 @@
 require("newrelic");
 
 
-var config = require("../config/configuration.js");
-var server = require('../app.js');
+var config = require("../config");
+var server = require('../app');
 
 server.listen(config.port, function() {
   console.log("server listening on port " + config.port);
