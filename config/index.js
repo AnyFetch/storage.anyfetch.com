@@ -23,9 +23,9 @@ var ttl = process.env.TTL || (1000 * 60 * 60 * 24) * 4;
 // Third party services
 var services = {};
 services.opbeat = {
-  organization_id: process.env.OPBEAT_ORGANIZATION_ID,
-  app_id: process.env.OPBEAT_APP_ID,
-  secret_token: process.env.OPBEAT_SECRET_TOKEN,
+  organizationId: process.env.OPBEAT_ORGANIZATION_ID,
+  appId: process.env.OPBEAT_APP_ID,
+  secretToken: process.env.OPBEAT_SECRET_TOKEN,
   silent: true,
 };
 
