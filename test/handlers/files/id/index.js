@@ -49,6 +49,14 @@ describe("/files/:id endpoint", function() {
         })
         .end(done);
     });
+
+    it("should refuse query without id", function(next) {
+      request(server)
+        .get('/files/')
+        .expect(409)
+        .expect(/Missing id param/)
+        .end(next);
+    });
   });
 
   describe("DELETE /files/:id", function() {
