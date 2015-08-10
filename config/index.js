@@ -15,7 +15,7 @@ var nodeEnv = process.env.NODE_ENV || "development";
 var port = process.env.PORT || 8000;
 
 var storageUrl = process.env.STORAGE_URL || 'https://storage.anyfetch.com';
-var storageDir = (process.env.STORAGE_DIR || '/tmp') + "/storage-anyfetch";
+var storageDir = process.env.STORAGE_DIR || '/tmp/storage-anyfetch';
 
 // Default TTL: 4 days
 var ttl = process.env.TTL || (1000 * 60 * 60 * 24) * 4;
